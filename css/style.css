@@ -4,6 +4,11 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
 }
 
 
@@ -20,26 +25,55 @@
 }
 
 .key {
+    position: relative;
+
+
     width: 150px;
     height: 110px;
     margin: 0.5px;
-
-
-
-
+    color: white;
+    background: linear-gradient(0deg, #000, #272727);background: rgba(0,0,0,0.4);
+    
     border-top: 4px solid black;
-    border-bottom: 3px solid rgb(255, 0, 0);
-    border-left: 3px solid black;
-    border-right: 3px solid black;
+    border-bottom: 2px solid rgba(255, 0, 0, 0.5);
+    border-left: 2px solid black;
+    border-right: 2px solid black;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    background: rgba(0,0,0,0.4);
-    color: white;
-
-
-
-
 }
+
+.key:before, .key:after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
+      #0000ff, #00ff00,#ffff00, #ff0000);
+    background-size: 400%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    animation: steam 20s linear infinite;
+  }
+
+  @keyframes steam {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  
+  .key:after {
+    filter: blur(50px);
+  }
+
+
+  
 
 .playing {
     transform: scale(1.1);
@@ -61,9 +95,5 @@ kbd {
 
 #audioBoard {
     width: 100%;
-    max-width: 2000px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1c887a;
+    max-width: 100px;
 }
